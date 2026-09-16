@@ -12,6 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
         menuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
+
+        // Close the mobile menu after tapping a link
+        navMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close the mobile menu if the viewport is resized back to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 800) {
+                navMenu.classList.remove('active');
+            }
+        });
     }
 
     // Force all reveal and hero elements to stay visible permanently (prevents invisible items)
